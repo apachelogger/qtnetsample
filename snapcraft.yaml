@@ -1,0 +1,19 @@
+name: qtnetsample
+version: '0'  # the version of the snap
+summary: This is my-snap's summary  # 79 char long summary
+description: This is my-snap's description  # a longer description for the snap
+confinement: strict  # use "strict" to enforce system access only via declared interfaces
+grade: devel # use "stable" to assert the snap quality
+base: core18
+
+apps:
+    qtnetsample:
+        command: launcher qtnetsample
+        plugs: [x11, network, network-bind]
+
+parts:
+    qtnetsample:
+        build-packages: [qt5-default]
+        plugin: cmake
+        stage-packages: [libqt5network5, libqt5core5a]
+        source: .
